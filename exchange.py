@@ -1,44 +1,66 @@
 # Question 3: Exchange Rates
-# This reads the Bank of Canada Exchange Rate File and gets the latest USD/CAD conversion rate,
+# This class reads the Bank of Canada Exchange Rate File and gets the latest USD/CAD conversion rate.
 # The user is then prompted to convert between USD and CAD using that rate.
 
-import csv   # import CSV module
+import csv
 
-# Full path and filename of your CSV
-filename = r"C:\Users\Owner\OneDrive - York University\Documents\FINE 3300\BankOfCanadaExchangeRates.csv"
+class ExchangeRates:
+    def __init__(self, filename):
+        # Store the filename and load the rate on initialization
+        self.filename = filename
+        self.usd_cad_rate = None
+        self._read_file()
 
-with open(filename, "r", encoding="utf-8-sig", newline="") as file:
-    reader = csv.reader(file)       # create CSV reader
-    rows = list(reader)             # convert to list so we can index
+    def _read_file(self):
+        """Read the CSV file and get the latest USD/CAD exchange rate"""
+        with open(self.filename, "r", encoding="utf-8-sig", newline="") as file:
+            reader = csv.reader(file)
+            rows = list(reader)
 
-    # First row is the header row
-    header = rows[0]
+            # Header row
+            header = rows[0]
 
-    # Find the column index for "USD/CAD"
-    usd_index = header.index("USD/CAD")
+            # Find the column index for "USD/CAD"
+            usd_index = header.index("USD/CAD")
 
-    # Walk backwards through rows to find the last valid row
-    last_row = None
-    for row in reversed(rows[1:]):  # skip the header
-        if row[usd_index].strip():  # check that cell is not empty
-            last_row = row
-            break
+            # Walk backwards to find the last valid row with a value
+            last_row = None
+            for row in reversed(rows[1:]):  # skip header
+                if row[usd_index].strip():
+                    last_row = row
+                    break
 
-    # Extract and convert the USD/CAD rate (1 USD = usd_cad_rate CAD)
-    usd_cad_rate = float(last_row[usd_index])
+            # Save the exchange rate (1 USD = usd_cad_rate CAD)
+            self.usd_cad_rate = float(last_row[usd_index])
 
-print(f"Latest USD/CAD rate from file: {usd_cad_rate}")
+    def convert(self, amount, from_currency, to_currency):
+        """Convert between USD and CAD using the latest rate"""
+        from_currency = from_currency.strip().upper()
+        to_currency = to_currency.strip().upper()
 
-# ---- Prompt user and convert using the rate printed above ----
-amount = float(input("Enter amount: "))
-from_curr = input("From currency (USD or CAD): ").strip().upper()
-to_curr = input("To currency (USD or CAD): ").strip().upper()
+        if from_currency == "USD" and to_currency == "CAD":
+            return round(amount * self.usd_cad_rate, 2)
+        elif from_currency == "CAD" and to_currency == "USD":
+            return round(amount / self.usd_cad_rate, 2)
+        else:
+            raise ValueError("Only USD and CAD conversions are supported.")
 
-if from_curr == "USD" and to_curr == "CAD":
-    converted = round(amount * usd_cad_rate, 2)   # 1 USD = rate CAD
-    print(f"Converted amount: {converted} CAD")
-elif from_curr == "CAD" and to_curr == "USD":
-    converted = round(amount / usd_cad_rate, 2)   # invert the rate
-    print(f"Converted amount: {converted} USD")
-else:
-    print("Only USD and CAD conversions are supported. Please enter USD or CAD.")
+# Execution starts here
+if __name__ == "__main__":
+    # Full path to your CSV file
+    filename = r"C:\Users\Owner\OneDrive - York University\Documents\FINE 3300\BankOfCanadaExchangeRates.csv"
+    
+    # Create ExchangeRates object
+    rates = ExchangeRates(filename)
+    print(f"Latest USD/CAD rate from file: {rates.usd_cad_rate}")
+
+    # Prompt user
+    amount = float(input("Enter amount: "))
+    from_curr = input("From currency (USD or CAD): ")
+    to_curr = input("To currency (USD or CAD): ")
+
+    try:
+        converted = rates.convert(amount, from_curr, to_curr)
+        print(f"Converted amount: {converted} {to_curr.upper()}")
+    except ValueError as e:
+        print(e)
