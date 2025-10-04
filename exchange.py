@@ -1,5 +1,6 @@
-# Question 2: Read Bank of Canada Exchange Rate File and get USD/CAD,
-# then prompt user to convert between USD and CAD using that rate.
+# Question 3: Exchange Rates
+# This reads the Bank of Canada Exchange Rate File and gets the latest USD/CAD conversion rate,
+# The user is then prompted to convert between USD and CAD using that rate.
 
 import csv   # import CSV module
 

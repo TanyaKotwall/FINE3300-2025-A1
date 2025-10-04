@@ -1,8 +1,6 @@
 # Question 1: Mortgage Payments
-# This class computes mortgage payments under different frequencies
-# using a quoted semi-annually compounded interest rate (Canadian convention).
-# Payment options include: monthly, semi-monthly, bi-weekly, weekly,
-# rapid bi-weekly, and rapid weekly.
+# This class computes mortgage payments under different frequencies using a quoted semi-annually compounded interest rate 
+# Payment options include: monthly, semi-monthly, bi-weekly, weekly, rapid bi-weekly, and rapid weekly
 
 import math
 
