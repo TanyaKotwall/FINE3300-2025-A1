@@ -1,17 +1,18 @@
 # Question 1:
 # Clients wants a MortgagePayment class to calculate various mortgage payment options.
-# Client wants to use this library across different products requiring mortgage calculations.
-# Takes the principal amount as a parameter and compute mortgage payments under different frequencies using the present value of annuity factor formula.
+# Client wants to use this library across different home mortgages requiring calculations.
 # Returns a tuple of (monthly, semi-monthly, bi-weekly, weekly, rapid bi-weekly, rapid weekly) payments.
 
 # Attributes of the MortgagePayment class: interest_rate, years (amortization period)
+# Public Method: payments
+#                takes principal amount as a parameter
+#                returns a tuple of payment amounts under different frequencies using the present value of annuity factor formula
 # Assumes values have been validated.
-
 import math
 
 class MortgagePayment:
     def __init__(self, rate_percent, years):
-        # Initialize the mortgage with interest rate (%) and amortization period (years)
+        """Initialize the mortgage with interest rate (%) and amortization period (years)"""
         # convert percentage to decimal
         self.rate = rate_percent / 100.0   
         self.years = years
