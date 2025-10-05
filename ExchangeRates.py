@@ -1,7 +1,13 @@
-# Question 3: Exchange Rates
-# This class reads the Bank of Canada Exchange Rate File and gets the latest USD/CAD conversion rate.
-# The user is then prompted to convert between USD and CAD using that rate.
+# Question 3:
+# Client wants an ExchangeRates class to read a Bank of Canada Exchange Rate file and calculate currency conversions between USD and CAD.
+# The class reads the latest available USD/CAD exchange rate from the CSV file.
+# It provides a public method to convert a user-specified amount between currencies.
 
+# Attributes of the ExchangeRates class: filename (CSV file name), rate (latest USD/CAD rate)
+# Public Method: convert
+#                takes an amount and two currency codes ('USD' or 'CAD') as parameters
+#                returns the converted amount using the latest exchange rate
+# Assumes the CSV file is formatted correctly and located in the right file path location.
 import csv
 
 class ExchangeRates:
