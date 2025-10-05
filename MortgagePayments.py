@@ -33,11 +33,9 @@ class MortgagePayment:
             # periodic rate
             r = (1 + EAR)**(1/freq) - 1     
             # total number of payments
-            n = freq * self.years                 
-            pmt = principal / self._annuity_factor(r, n)
-            # round to 2 decimal places
-            result.append(round(pmt, 2))      
-
+            n = freq * self.years                
+            result.append(round(principal / self._annuity_factor(r, n), 2))
+            
         # Step 3: Add Rapid payment options (based on monthly payment)
         monthly = result[0]
         # rapid bi-weekly
