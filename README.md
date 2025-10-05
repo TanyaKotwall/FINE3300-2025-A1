@@ -2,14 +2,13 @@
 This repository is for Assignment 1 which contains code in Python using Visual Studio Code for Canadian Home Mortgage Payments class and Bank of Canada Currency Exchange Rates class.   
 
 ## Contents
-1. `mortgage.py` → Calculates mortgage payments under different frequencies (monthly, semi-monthly bi-weekly, weekly, rapid bi-weekly, rapid weekly).
-2. `exchange.py` → Reads Bank of Canada exchange rate CSV and converts between USD and CAD.
+1. `MortgagePayments.py` This project implements a **MortgagePayment** class that calculates mortgage payments for Canadian home loans under different payment frequencies. It converts a quoted annual interest rate (with semi-annual compounding) into an effective annual rate, then computes payments using the **Present Value of an Annuity (PVA)** formula.
+
+The program prompts the user for: Principal amount ($), Interest rate (%), Amortization period (years)
+
+It returns the corresponding mortgage payments for different frequencies: Monthly, Semi-Monthly, Bi-Weekly, Weekly, Rapid Bi-Weekly, Rapid Weekly  
+
+This tool can be reused across various home mortgages requiring standardized mortgage payment calculations.
+2. `ExchangeRates.py` → Reads Bank of Canada exchange rate CSV and converts between USD and CAD.
 3. `README.md` → This file describes the project.
 
-## How to Run
-1. Clone this repository to your computer.
-2. Open Visual Studio Code.
-3. Run the Python files using git clone by writing in the terminal: https://github.com/TanyaKotwall/FINE3300-2025-AI and press enter. 
-4. Write cd FINE3300-2025-AI and press enter.
-5. Write code . and press enter
-6. Now the repository is downloaded, moved into a folder and opened in Visual Studio Code. 

@@ -3,7 +3,7 @@
 # Client wants to use this library across different home mortgages requiring calculations.
 # Returns a tuple of (monthly, semi-monthly, bi-weekly, weekly, rapid bi-weekly, rapid weekly) payments.
 
-# Attributes of the MortgagePayment class: interest_rate, years (amortization period)
+# Attributes of the MortgagePayment class: interest_rate, years (amortization period).
 # Public Method: payments
 #                takes principal amount as a parameter
 #                returns a tuple of payment amounts under different frequencies using the present value of annuity factor formula
@@ -18,42 +18,36 @@ class MortgagePayment:
         self.years = years
 
     def _annuity_factor(self, r, n):
-        # Present Value of Annuity Factor (PVA)
-        # Formula: (1 - (1 + r)^-n) / r
+        """PVA = (1 - (1 + r)^-n) / r"""
         return (1 - (1 + r)**(-n)) / r
 
     def payments(self, principal):
         # Step 1: Convert quoted semi-annual rate to Effective Annual Rate (EAR)
-        # semi-annual rate
-        i_sa = self.rate / 2.0                 
-        # effective annual rate
-        EAR = (1 + i_sa)**2 - 1                
+        EAR = (1 + self.rate/2)**2 - 1                
 
-        PaymentList = []
+        result = []
 
         # Step 2: Calculate periodic payments for each frequency
         # Monthly (12), Semi-Monthly (24), Bi-Weekly (26), Weekly (52)
-        m = MortgagePayment
-        for m in (12, 24, 26, 52):
+        for freq in (12, 24, 26, 52):
             # periodic rate
-            r = (1 + EAR)**(1/m) - 1     
+            r = (1 + EAR)**(1/freq) - 1     
             # total number of payments
-            n = m * self.years                 
+            n = freq * self.years                 
             pmt = principal / self._annuity_factor(r, n)
             # round to 2 decimal places
-            PaymentList.append(round(pmt, 2))      
+            result.append(round(pmt, 2))      
 
         # Step 3: Add Rapid payment options (based on monthly payment)
-        monthly = PaymentList[0]
-         # rapid bi-weekly
-        PaymentList.append(round(monthly / 2, 2))  
+        monthly = result[0]
+        # rapid bi-weekly
+        result.append(round(monthly / 2, 2))  
         # rapid weekly
-        PaymentList.append(round(monthly / 4, 2))   
+        result.append(round(monthly / 4, 2))   
 
         # Return all payments as a tuple
-        return tuple(PaymentList)
+        return tuple(result)
 
-# Execution starts here
 if __name__ == "__main__":
     # Prompt user for input values
     print("Mortgage Payment Calculator User Input")
@@ -63,10 +57,8 @@ if __name__ == "__main__":
     rate = float(input("Enter the interest rate (%): "))
     years = int(input("Enter the amortization period (Years): "))
 
-    # Create MortgagePayment object
+    # Create MortgagePayment object and compute all payment options
     mortgage = MortgagePayment(rate, years)
-
-    # Compute all payment options
     payments = mortgage.payments(principal)
 
     # Display results in required format
