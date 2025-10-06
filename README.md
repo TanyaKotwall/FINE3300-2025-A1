@@ -21,12 +21,12 @@ The program prompts the user for 3 key inputs and returns the corresponding mort
 - Rapid Weekly  
 
 ### Exchange Rates
-`ExchangeRates.py` This project implements an **ExchangeRates** class that reads a **Bank of Canada Exchange Rate CSV file** and converts between USD and CAD currencies. The class extracts the most recent USD/CAD exchange rate from the file and applies it to user-entered amounts.
+`ExchangeRates.py` This project implements an **ExchangeRates** class that reads a **Bank of Canada Exchange Rate CSV file** and converts between USD and CAD currencies. The class loads the most recent USD/CAD exchange rate from the CSV file using pandas and applies it to user-entered amounts and can be used to calculate various amounts.
 
 **User Inputs:**
 - Amount to convert
-- Source currency (USD or CAD)
-- Target currency (USD or CAD)
+- From currency (USD or CAD)
+- To currency (USD or CAD)
 
 **Outputs:**
 Converted amount in the target currency, formatted to two decimal places.

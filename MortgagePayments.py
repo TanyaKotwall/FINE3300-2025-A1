@@ -24,11 +24,11 @@ class MortgagePayment:
     def payments(self, principal):
         # Step 1: Convert quoted semi-annual rate to Effective Annual Rate (EAR)
         EAR = (1 + self.rate/2)**2 - 1                
-
         result = []
 
         # Step 2: Calculate periodic payments for each frequency
-        # Monthly (12), Semi-Monthly (24), Bi-Weekly (26), Weekly (52)
+        """Uses a loop to iterate through payment frequencies, Monthly (12), Semi-Monthly (24), Bi-Weekly (26), Weekly (52)"""
+        """Computes the corresponding periodic payments using the annuity formula"""
         for freq in (12, 24, 26, 52):
             # periodic rate
             r = (1 + EAR)**(1/freq) - 1     
