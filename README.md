@@ -5,7 +5,7 @@ This repository is for Assignment 1 in FINE3300 course which contains code in Py
 ### Mortgage Payments
 `MortgagePayments.py` This project implements a **MortgagePayment** class that calculates mortgage payments for Canadian home loans under different payment frequencies. It converts a quoted annual interest rate (with semi-annual compounding) into an effective annual rate, then computes payments using the **Present Value of an Annuity (PVA)** formula. This tool can be reused across various home mortgages requiring standardized mortgage payment calculations.
 
-The program prompts the user for 3 key inputs and returns the corresponding mortgage payments with different frequencies
+The program prompts the user for 3 key inputs and returns the corresponding mortgage payments with different frequencies.
 
 **Users:**
 - Principal amount ($)
