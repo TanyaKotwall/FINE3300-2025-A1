@@ -3,7 +3,7 @@
 # Client wants to use this library across different home mortgages requiring calculations.
 # Returns a tuple of (monthly, semi-monthly, bi-weekly, weekly, rapid bi-weekly, rapid weekly) payments.
 
-# Attributes of the MortgagePayment class: interest_rate, years (amortization period).
+# Attributes of the MortgagePayment class: rate (annual interest rate in decimal), years (amortization period).
 # Public Method: payments
 #                takes principal amount as a parameter
 #                returns a tuple of payment amounts under different frequencies using the present value of annuity factor formula

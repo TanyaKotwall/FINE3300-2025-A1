@@ -3,11 +3,11 @@
 # The class uses pandas and reads the latest available USD/CAD exchange rate from the CSV file.
 # It provides a public method to convert a user-specified amount between currencies.
 
-# Attributes of the ExchangeRates class: filename (CSV file name), rate (latest USD/CAD rate)
+# Attributes of the ExchangeRates class: filename (CSV file name), usd_cad_rate (latest rate)
 # Public Method: convert
 #                takes an amount and two currency codes ('USD' or 'CAD') as parameters
 #                returns the converted amount using the latest exchange rate
-# Assumes the CSV file is formatted correctly and located in the right file path location and ensure you have installed pandas.
+# Assumes the CSV file is formatted correctly and located in the right file path location and ensure pandas is installed.
 
 # Pandas is used to read and process the exchange rate CSV file
 import pandas as pd
@@ -47,6 +47,6 @@ if __name__ == "__main__":
     from_curr = input("From currency (USD or CAD): ")
     to_curr = input("To currency (USD or CAD): ")
 
-    # Performs conversion and displays result
+    # Performs the currency conversion and displays result
     converted = exchange.convert(amount, from_curr, to_curr)
     print(f"Converted amount: ${converted} {to_curr.upper()}")
