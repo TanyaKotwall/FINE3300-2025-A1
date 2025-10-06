@@ -1,4 +1,4 @@
-# FINE3300-2025-AI
+# FINE3300-2025-A1
 This repository is for Assignment 1 in FINE3300 course which contains code in Python using Visual Studio Code for Canadian Home Mortgage Payments class and Bank of Canada Currency Exchange Rates class.   
 
 ## Contents
